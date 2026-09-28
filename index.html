@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foreign Investments Act Reviewer — RA 7042 + RA 8179</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root{
+  --brick:#5e2c22;
+  --brick-2:#733a2c;
+  --wheat:#c9962e;
+  --wheat-light:#e8c877;
+  --forest:#33502f;
+  --forest-light:#537a4c;
+  --parchment:#f7f0da;
+  --parchment-2:#eee0b8;
+  --line:#ddc99a;
+  --ink:#241d16;
+  --ink-soft:#5c5240;
+  --sans:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --serif:'Spectral', Georgia, 'Times New Roman', serif;
+  --mono:'IBM Plex Mono', monospace;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--brick);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--wheat-light); color:var(--brick);}
+
+.app{ display:grid; grid-template-columns:260px 1fr; min-height:100vh; }
+@media (max-width:900px){ .app{grid-template-columns:1fr;} }
+
+.sidebar{
+  background:var(--brick); color:#e9ddd0; padding:28px 20px 24px;
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  border-right:1px solid rgba(232,200,119,0.18);
+}
+@media (max-width:900px){
+  .sidebar{position:static; height:auto; border-right:none; border-bottom:1px solid rgba(232,200,119,0.18); padding:18px 16px;}
+}
+.crest{ display:flex; align-items:center; gap:12px; margin-bottom:22px; }
+.crest-mark{
+  width:44px;height:44px;flex:0 0 44px; border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, var(--wheat-light), var(--wheat) 55%, #8a611c 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif); font-weight:700; color:var(--brick); font-size:13px;
+  box-shadow:0 0 0 3px rgba(232,200,119,0.15);
+}
+.crest-text .k1{font-family:var(--serif); font-size:19px; font-weight:600; color:#f7f0da; line-height:1.1;}
+.crest-text .k2{font-size:11px; letter-spacing:.04em; color:#c2ac93; margin-top:2px;}
+
+.nav-group-label{ font-size:10.5px; text-transform:uppercase; letter-spacing:.11em; color:#a68f76; margin:20px 0 8px; font-weight:600; }
+.nav-group-label:first-of-type{margin-top:4px;}
+nav.tabs{display:flex; flex-direction:column; gap:2px;}
+@media (max-width:900px){ nav.tabs{flex-direction:row; flex-wrap:wrap;} }
+.tab-btn{
+  all:unset; cursor:pointer; display:flex; align-items:center; gap:10px;
+  padding:9px 10px; border-radius:7px; font-size:13.5px; color:#d9c8b5;
+  transition:background .15s ease, color .15s ease;
+}
+.tab-btn:hover{background:rgba(232,200,119,0.08); color:#f7f0da;}
+.tab-btn.active{background:rgba(232,200,119,0.14); color:#f7f0da; font-weight:600;}
+.tab-btn .dot{width:6px;height:6px;border-radius:50%;background:#7a5c47; flex:0 0 6px;}
+.tab-btn.active .dot{background:var(--wheat-light);}
+
+.side-foot{ margin-top:26px; padding-top:16px; border-top:1px solid rgba(232,200,119,0.15); font-size:11px; color:#a68f76; line-height:1.6; }
+
+main.content{ background:var(--parchment); min-height:100vh; }
+.topbar{
+  position:sticky; top:0; z-index:20; background:var(--parchment); border-bottom:1px solid var(--line);
+  padding:16px 32px; display:flex; gap:16px; align-items:center;
+}
+@media (max-width:640px){ .topbar{padding:12px 16px; flex-wrap:wrap;} }
+.search-wrap{flex:1; position:relative; max-width:480px;}
+.search-wrap input{
+  width:100%; padding:10px 14px 10px 36px; border-radius:8px; border:1px solid var(--line);
+  background:#fff; font-family:var(--sans); font-size:13.5px; color:var(--ink); outline:none;
+}
+.search-wrap input:focus{border-color:var(--wheat);}
+.search-wrap svg{position:absolute; left:11px; top:50%; transform:translateY(-50%); opacity:.45;}
+.topbar-title{font-family:var(--serif); font-size:15px; color:var(--ink-soft); margin-left:auto; white-space:nowrap;}
+@media (max-width:640px){ .topbar-title{display:none;} }
+
+.view{padding:32px; max-width:940px; margin:0 auto;}
+@media (max-width:640px){ .view{padding:20px 16px;} }
+.view-header{margin-bottom:26px;}
+.eyebrow-row{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+.badge-pill{ font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; background:var(--brick); color:var(--wheat-light); padding:3px 9px; border-radius:20px; }
+h1.view-title{font-family:var(--serif); font-size:32px; font-weight:600; margin:0 0 8px; color:var(--brick); line-height:1.15;}
+p.view-sub{font-size:14.5px; color:var(--ink-soft); max-width:62ch; line-height:1.6; margin:0;}
+
+.stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:24px 0 30px;}
+@media (max-width:700px){ .stat-row{grid-template-columns:repeat(2,1fr);} }
+.stat-card{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px; }
+.stat-card .n{font-family:var(--serif); font-size:24px; color:var(--forest); font-weight:600; line-height:1;}
+.stat-card .l{font-size:11.5px; color:var(--ink-soft); margin-top:6px;}
+
+.home-timeline{border-left:2px solid var(--line); margin-left:8px; padding-left:22px; display:flex; flex-direction:column; gap:20px;}
+.tl-item{position:relative;}
+.tl-item::before{
+  content:''; position:absolute; left:-28.5px; top:3px; width:11px; height:11px; border-radius:50%;
+  background:var(--wheat); border:2px solid var(--parchment); box-shadow:0 0 0 2px var(--wheat);
+}
+.tl-date{font-family:var(--mono); font-size:12px; color:var(--forest); font-weight:600;}
+.tl-title{font-family:var(--serif); font-size:16.5px; font-weight:600; color:var(--brick); margin:2px 0 3px;}
+.tl-desc{font-size:13.5px; color:var(--ink-soft); line-height:1.55; max-width:64ch;}
+
+.quicklinks{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:26px;}
+@media (max-width:640px){ .quicklinks{grid-template-columns:1fr;} }
+.qlink{ display:block; text-decoration:none; background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 18px; cursor:pointer; transition:border-color .15s, transform .1s; }
+.qlink:hover{border-color:var(--wheat);}
+.qlink .qt{font-family:var(--serif); font-weight:600; color:var(--brick); font-size:15px;}
+.qlink .qd{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}
+
+.article-block{margin-bottom:34px;}
+.article-heading{
+  font-family:var(--serif); font-size:19px; font-weight:600; color:var(--brick);
+  padding-bottom:8px; margin-bottom:14px; border-bottom:2px solid var(--wheat);
+  display:flex; align-items:baseline; gap:10px;
+}
+.article-heading .tag{font-family:var(--mono); font-size:11px; color:var(--forest); font-weight:600;}
+
+.sec-card{ background:#fff; border:1px solid var(--line); border-radius:10px; margin-bottom:10px; overflow:hidden; }
+.sec-head{ all:unset; box-sizing:border-box; cursor:pointer; width:100%; display:flex; align-items:center; gap:12px; padding:14px 16px; }
+.sec-num{ font-family:var(--mono); font-size:12px; color:#fff; background:var(--brick); padding:3px 8px; border-radius:5px; flex:0 0 auto; white-space:nowrap; }
+.sec-title{font-family:var(--serif); font-weight:600; font-size:15px; color:var(--ink); flex:1;}
+.sec-chevron{transition:transform .2s ease; color:var(--ink-soft); flex:0 0 auto;}
+.sec-card.open .sec-chevron{transform:rotate(180deg);}
+.sec-body{ max-height:0; overflow:hidden; transition:max-height .25s ease; padding:0 16px; }
+.sec-card.open .sec-body{padding:0 16px 16px;}
+.sec-body-inner{font-size:14px; line-height:1.65; color:var(--ink);}
+.sec-body-inner p{margin:0 0 10px;}
+.sec-body-inner ul{margin:0 0 10px; padding-left:20px;}
+.sec-body-inner li{margin-bottom:5px;}
+.kw{ background:linear-gradient(transparent 60%, var(--wheat-light) 60%); font-weight:600; }
+.trap-box{ background:#eaf0e7; border-left:3px solid var(--forest); border-radius:6px; padding:10px 12px; font-size:13px; color:#20351d; margin-top:8px; display:flex; gap:8px; }
+.trap-box .lbl{font-family:var(--mono); font-weight:700; font-size:10.5px; color:var(--forest); white-space:nowrap; padding-top:1px;}
+
+.glossary-grid{display:grid; grid-template-columns:1fr; gap:10px;}
+.g-card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 16px;}
+.g-term{font-family:var(--serif); font-weight:700; color:var(--brick); font-size:15px;}
+.g-abbr{font-family:var(--mono); font-size:11px; color:var(--forest); margin-left:6px;}
+.g-def{font-size:13.5px; color:var(--ink-soft); margin-top:4px; line-height:1.55;}
+
+.people-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+@media (max-width:640px){ .people-grid{grid-template-columns:1fr;} }
+.p-card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px;}
+.p-name{font-family:var(--serif); font-weight:700; color:var(--brick); font-size:16px;}
+.p-role{font-size:11.5px; color:var(--forest); font-weight:600; margin:2px 0 8px; text-transform:uppercase; letter-spacing:.03em;}
+.p-desc{font-size:13px; color:var(--ink-soft); line-height:1.55;}
+
+.trap-list{display:flex; flex-direction:column; gap:10px;}
+.trap-item{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--forest); border-radius:8px; padding:14px 16px; }
+.trap-item .tnum{font-family:var(--mono); font-size:11px; color:var(--forest); font-weight:700;}
+.trap-item .ttitle{font-family:var(--serif); font-weight:600; font-size:14.5px; color:var(--brick); margin:3px 0 4px;}
+.trap-item .tbody{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
+
+.quiz-box{background:#fff; border:1px solid var(--line); border-radius:12px; padding:22px;}
+.quiz-progress{font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); margin-bottom:10px;}
+.quiz-q{font-family:var(--serif); font-size:17px; font-weight:600; color:var(--brick); margin-bottom:16px; line-height:1.4;}
+.quiz-opts{display:flex; flex-direction:column; gap:8px;}
+.quiz-opt{
+  all:unset; box-sizing:border-box; cursor:pointer; display:block; padding:11px 14px;
+  border:1px solid var(--line); border-radius:8px; font-size:13.5px; transition:border-color .15s, background .15s;
+}
+.quiz-opt:hover{border-color:var(--wheat);}
+.quiz-opt.correct{background:#eaf3ea; border-color:#4c6b52; color:#284a2c; font-weight:600;}
+.quiz-opt.wrong{background:#f7e6e1; border-color:#a8452e; color:#5c2317; font-weight:600;}
+.quiz-opt.disabled{pointer-events:none;}
+.quiz-explain{ margin-top:14px; padding:12px 14px; background:var(--parchment-2); border-radius:8px; font-size:13px; color:var(--ink-soft); line-height:1.55; display:none; }
+.quiz-explain.show{display:block;}
+.quiz-nav{display:flex; justify-content:space-between; align-items:center; margin-top:18px;}
+.btn{ all:unset; cursor:pointer; font-family:var(--sans); font-weight:600; font-size:13px; background:var(--brick); color:#f7f0da; padding:10px 18px; border-radius:7px; }
+.btn:hover{background:var(--brick-2);}
+.btn.ghost{background:transparent; color:var(--ink-soft); border:1px solid var(--line);}
+.quiz-score{font-family:var(--serif); font-size:22px; color:var(--brick); text-align:center; padding:20px 0;}
+.quiz-score .sub{font-family:var(--sans); font-size:13px; color:var(--ink-soft); font-weight:400; margin-top:6px;}
+
+.hidden{display:none !important;}
+.nores{padding:40px 0; text-align:center; color:var(--ink-soft); font-size:14px;}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<div class="crest"><div class="crest-mark">FIA</div><div class="crest-text"><div class="k1">Foreign Investments Codex</div><div class="k2">RA 7042 · RA 8179 · REB &amp; REA</div></div></div>
+<div class="nav-group-label">Reviewer</div>
+<nav class="tabs">
+<button class="tab-btn active" data-tab="home"><span class="dot"></span>Overview</button>
+<button class="tab-btn" data-tab="core"><span class="dot"></span>Core FIA Provisions</button>
+<button class="tab-btn" data-tab="land"><span class="dot"></span>Land vs. Shares</button>
+<button class="tab-btn" data-tab="condo"><span class="dot"></span>Condominium (RA 4726)</button>
+</nav>
+<div class="nav-group-label">Study Aids</div>
+<nav class="tabs">
+<button class="tab-btn" data-tab="people"><span class="dot"></span>Dates &amp; People</button>
+<button class="tab-btn" data-tab="glossary"><span class="dot"></span>Glossary of Terms</button>
+<button class="tab-btn" data-tab="traps"><span class="dot"></span>Board Exam Traps</button>
+<button class="tab-btn" data-tab="quiz"><span class="dot"></span>Self-Test Quiz</button>
+</nav>
+<div class="side-foot">Built for BSREM review. Verify the current Negative List and IRRs before the exam.</div>
+</aside>
+<main class="content">
+<div class="topbar"><div class="search-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="searchInput" type="text" placeholder="Search sections, terms, dates, traps…"></div><div class="topbar-title" id="topbarTitle">Overview</div></div>
+<div class="view" id="viewRoot"></div>
+</main></div>
+<script>
+const timeline=[{"date": "1966", "title": "RA 4726 — Condominium Act", "desc": "Enacted 1966 (Pres. Marcos). Allows foreigners to own condominium units provided aggregate foreign ownership in the condominium corporation does not exceed 40%."}, {"date": "1968", "title": "RA 5455 — Foreign Business Regulations Act", "desc": "Earlier regime regulating foreign business; later superseded as the FIA liberalized entry."}, {"date": "Jan 1987", "title": "1987 Constitution (Art. XII)", "desc": "Sec. 2 (Regalian doctrine), Sec. 3 (alienable lands only to Filipinos), Sec. 7 (private land only to Filipino citizens/qualified corporations), Sec. 8 (natural-born former citizens). Foundation of every land-ownership rule in this reviewer."}, {"date": "Jun 13, 1991", "title": "RA 7042 — Foreign Investments Act of 1991", "desc": "Approved by Pres. Corazon C. Aquino. Liberalized foreign equity: up to 100% allowed unless in the Negative List. Created the two-part Negative List (A and B)."}, {"date": "Jun 1993", "title": "RA 7652 — Investors' Lease Act", "desc": "Foreign investors may lease private land for 50 years, renewable once for 25 (75 total) — later replaced by RA 12252."}, {"date": "Mar 28, 1996", "title": "RA 8179 signed", "desc": "Approved by Pres. Fidel V. Ramos. Amends RA 7042: lowered the minimum paid-in capital for foreign-owned domestic market enterprises from US$500,000 to US$200,000 (US$100,000 if advanced technology or 50 direct employees); refined 'doing business' and the Negative List."}, {"date": "Mar 2, 2022", "title": "RA 11647 signed", "desc": "Approved by Pres. Rodrigo Duterte. Amends RA 7042 again: 100% foreign ownership of domestic enterprises unless prohibited; US$100,000 minimum for small enterprises with advanced technology, startup endorsement, or at least 15 Filipino direct employees."}, {"date": "Jun 2022", "title": "12th Regular Foreign Investment Negative List (EO 175)", "desc": "The Negative List is reviewed every 2 years; always verify which list is current."}, {"date": "Sep 3, 2025", "title": "RA 12252 — 99-year lease law", "desc": "Signed by Pres. Ferdinand R. Marcos Jr. Amends the Investors' Lease Act: aggregate lease of private land by foreign investors up to 99 years. Constitutional ban on foreign land OWNERSHIP unchanged."}];
+const people=[{"name": "Pres. Corazon C. Aquino", "role": "Approved RA 7042 (1991)", "desc": "Liberalized foreign investment under the 1987 Constitution's framework."}, {"name": "Pres. Fidel V. Ramos", "role": "Approved RA 8179 (1996)", "desc": "Amended the FIA: lowered minimum capital thresholds and refined the Negative List."}, {"name": "Pres. Rodrigo R. Duterte", "role": "Approved RA 11647 (2022)", "desc": "Second major FIA liberalization; startups and micro/small enterprise thresholds."}, {"name": "Pres. Ferdinand R. Marcos Jr.", "role": "Approved RA 12252 (2025)", "desc": "99-year foreign investor land lease. IRR signed Dec 19, 2025, effective Jan 4, 2026."}, {"name": "NEDA", "role": "Reviews & recommends the Negative List", "desc": "National Economic and Development Authority — recommends amendments; the Regular Negative List is issued by the President."}, {"name": "BOI", "role": "Registers export enterprises", "desc": "Board of Investments — foreign export enterprises register with BOI and submit export-ratio reports."}, {"name": "SEC / DTI", "role": "Registration of corporations / business names", "desc": "SEC registers corporations (checks 60/40 compliance); DTI registers sole proprietorships and implements the Investors' Lease Act with BOI and LRA."}, {"name": "1986 Constitutional Commission", "role": "Framers of Art. XII", "desc": "Framed the 60-40 rule and the ban on foreign land ownership."}];
+const glossary=[{"term": "Philippine national", "abbr": "RA 7042 Sec. 3", "def": "A Filipino citizen; a domestic partnership wholly owned by Filipinos; a corporation organized under PH laws with at least 60% of capital stock outstanding and entitled to vote owned by Filipinos; or a foreign-registered corporation wholly owned by Filipinos, etc."}, {"term": "Non-Philippine national", "abbr": "", "def": "Any person or entity that does not qualify as a Philippine national; commonly called a 'foreigner' or foreign investor."}, {"term": "Doing business", "abbr": "RA 7042 Sec. 3(d)", "def": "Soliciting orders, service contracts, opening offices, participating in management, supervision or control of a domestic business, or other acts implying continuity of commercial dealings. Mere investment as a shareholder, isolated transactions, and appointing a representative are NOT doing business."}, {"term": "Domestic market enterprise", "abbr": "", "def": "Produces goods for sale or renders services to the local market entirely, or exports less than 60% of output."}, {"term": "Export enterprise", "abbr": "", "def": "Exports at least 60% of its products or services; may be up to 100% foreign owned unless in Lists A/B."}, {"term": "Foreign Investment Negative List (FINL)", "abbr": "RA 7042 Sec. 8", "def": "Areas of activity where foreign ownership is limited; reviewed every 2 years. List A = limited by the Constitution and specific laws. List B = limited for security, defense, risk to health and morals, and protection of small and medium enterprises."}, {"term": "Paid-in equity capital threshold", "abbr": "US$200,000 / US$100,000", "def": "Domestic market enterprises with paid-in capital below US$200,000 are reserved to Filipinos. Foreign nationals may invest at US$100,000 if advanced technology (DOST), startup/startup enabler endorsement, or at least 15 Filipino direct employees (RA 11647)."}, {"term": "Alienable and disposable (A&D) land", "abbr": "", "def": "Public land classified as agricultural and released for disposition; only Filipinos may acquire it (Art. XII Sec. 3)."}, {"term": "Aliens and land ownership", "abbr": "Art. XII Sec. 7", "def": "Private lands may be transferred or conveyed only to Filipino citizens, or to corporations at least 60% Filipino owned. Exception: hereditary succession."}, {"term": "Natural-born former citizen", "abbr": "Art. XII Sec. 8 / BP 185 / RA 7042", "def": "May own private land as transferee, subject to limits: up to 5,000 sq m of urban land or 3 hectares of rural land (for business or other purposes), and 1,000 sq m urban / 1 ha rural for residence under BP 185 (as amended)."}, {"term": "Condominium unit vs. land", "abbr": "RA 4726", "def": "A condominium project's common areas and the land are held by the condominium corporation; foreigners may own units if foreign equity in the corporation is at most 40%."}, {"term": "Anti-Dummy Law", "abbr": "CA 108", "def": "Penalizes Filipinos who lend their names to foreigners to hold land or operate nationalized businesses — a standard dummy-arrangement trap."}, {"term": "Investors' Lease Act", "abbr": "RA 7652 / RA 12252", "def": "Allows foreign investors to LEASE private land (now aggregate up to 99 years) for industrial, commercial, agro-industrial, tourism or conservation projects — lease, not ownership."}];
+const coreArticles=[{"heading": "RA 7042 — Foreign Investments Act of 1991", "tag": "Approved Jun 13, 1991", "sections": [{"num": "Policy & coverage", "title": "Attract, promote and welcome productive foreign investments", "body": "<p>Approved by Pres. <span class='kw'>Corazon C. Aquino</span>. General rule: non-Philippine nationals may own <span class='kw'>up to 100%</span> of domestic and export enterprises <b>unless</b> the activity is in the Negative List or restricted by the Constitution or law.</p>"}, {"num": "Sec. 3", "title": "Definitions: Philippine national and 'doing business'", "body": "<p>A corporation is a Philippine national if <span class='kw'>at least 60%</span> of capital stock outstanding <b>and entitled to vote</b> is owned by Filipinos. 'Doing business' includes soliciting orders, service contracts, opening offices, and participating in management or control. <b>Not</b> doing business: mere investment as shareholder, isolated transactions, appointing a distributor or representative.</p><div class='trap-box'><span class='lbl'>TRAP</span><span>Buying shares of a corporation is an <b>investment</b>, not 'doing business' by the foreign shareholder.</span></div>"}, {"num": "Sec. 5–7", "title": "Domestic vs. export enterprises", "body": "<p>Export enterprise = exports <span class='kw'>at least 60%</span> of output. Domestic market enterprise = sells locally or exports below 60%. Both may be up to 100% foreign owned unless in Lists A/B; foreign export enterprises register with the BOI.</p>"}, {"num": "Sec. 8", "title": "The Foreign Investment Negative List", "body": "<ul><li><b>List A</b>: foreign ownership limited by the Constitution and specific laws (mass media 0%, practice of professions, small-scale mining, private land ownership 40% cap, public utilities, etc.).</li><li><b>List B</b>: limited for security, defense, risk to health and morals, and protection of small and medium enterprises.</li><li>Reviewed every <span class='kw'>2 years</span>; the 12th Regular List was EO 175 (June 2022). Always check the current list.</li></ul>"}]}, {"heading": "RA 8179 — Amending the Foreign Investments Act", "tag": "Approved Mar 28, 1996", "sections": [{"num": "Key changes", "title": "Lowered thresholds and refined definitions", "body": "<p>Approved by Pres. <span class='kw'>Fidel V. Ramos</span>. Reduced the minimum paid-in capital for foreign-owned domestic market enterprises (small and medium enterprises reserved to Filipinos below <span class='kw'>US$200,000</span>; original RA 7042 figure was US$500,000). Exception: <span class='kw'>US$100,000</span> if the enterprise involves advanced technology (DOST) or employs at least 50 direct employees.</p>"}, {"num": "Carry-over", "title": "Negative List mechanics", "body": "<p>Introduced the transitory list replaced by the first Regular Negative List, and set amendment rules for List A (by law) and List B (by NEDA-endorsed Presidential proclamation).</p>"}]}, {"heading": "RA 11647 — 2022 Amendments (must-know update)", "tag": "Signed Mar 2, 2022", "sections": [{"num": "Changes", "title": "100% foreign ownership and the US$100,000 rule", "body": "<p>Signed by Pres. <span class='kw'>Duterte</span>. Reiterates up to 100% foreign ownership of domestic enterprises without prior approval, unless limited by law or the Negative List. Micro/small enterprises below US$200,000 remain reserved to Filipinos, but US$100,000 is allowed if: (1) advanced technology, (2) endorsed as startup/startup enabler, or (3) majority Filipino direct employees and at least <span class='kw'>15</span> Filipinos (formerly 50).</p><div class='trap-box'><span class='lbl'>TRAP</span><span>Older reviewers say '50 direct employees'. The current rule is <b>15 Filipino direct employees</b>, thanks to RA 11647.</span></div>"}]}];
+const landArticles=[{"heading": "Land Ownership vs. Shares in a Land-Owning Corporation", "tag": "Constitution Art. XII", "sections": [{"num": "Art. XII Sec. 3", "title": "Alienable public lands: Filipinos only", "body": "<p>Only Filipino citizens may acquire A&D public lands (12 ha limit for individuals); private corporations may only <b>lease</b> up to 1,000 ha for 25 years, renewable for 25.</p>"}, {"num": "Art. XII Sec. 7", "title": "Private lands: Filipinos and 60% Filipino corporations", "body": "<p>Save in cases of hereditary succession, no private lands shall be transferred or conveyed except to individuals, corporations or associations qualified to acquire public lands — i.e., <span class='kw'>Filipino citizens or corporations at least 60% Filipino-owned</span>.</p>"}, {"num": "Corporation rule", "title": "40% foreign cap in a land-owning corporation", "body": "<p>A corporation owning land must be at least 60% Filipino owned (both capital stock and voting). Foreigners may hold shares up to <span class='kw'>40%</span> in the land-owning corporation. The corporation, not the foreigner, owns the land.</p><div class='trap-box'><span class='lbl'>TRAP</span><span>Owning <b>shares</b> in a land-owning corporation (max 40% foreign) is different from owning <b>land</b> (Filipinos only). A foreigner never holds title to land directly.</span></div>"}, {"num": "Art. XII Sec. 8", "title": "Natural-born former Filipino citizens", "body": "<p>May own private land subject to law: up to <span class='kw'>5,000 sq m urban / 3 ha rural</span> for business or other purposes; residence limits of 1,000 sq m urban / 1 ha rural under BP 185.</p>"}, {"num": "Foreign spouse & succession", "title": "Exceptions and pitfalls", "body": "<p>Hereditary succession is a valid exception; a foreigner who buys land through a Filipino spouse or a dummy risks nullity and criminal liability under the <span class='kw'>Anti-Dummy Law (CA 108)</span>. A sale to a foreigner is void, and the land may be reverted to the State.</p>"}]}, {"heading": "What Foreigners CAN Do With Land", "tag": "Leasing", "sections": [{"num": "Lease", "title": "Long-term lease of private land", "body": "<p>Under the Investors' Lease Act (RA 7652), foreign investors could lease private land for 50 years, renewable for 25 (75 total). <span class='kw'>RA 12252 (Sep 3, 2025)</span> now allows an aggregate of <span class='kw'>99 years</span>; the President may impose a shorter period for critical infrastructure. Investor must have an approved/registered investment. IRR effective Jan 4, 2026.</p>"}, {"num": "Other options", "title": "Ways foreigners hold property interests", "body": "<ul><li>Own condominium units (RA 4726, 40% cap).</li><li>Own shares in Filipino-controlled land-owning corporations (max 40%).</li><li>Inherit land by hereditary succession.</li><li>Own improvements/buildings on leased land (not the land).</li></ul>"}]}];
+const condoArticles=[{"heading": "RA 4726 — The Condominium Act", "tag": "1966", "sections": [{"num": "40% rule", "title": "Foreigners may own condo units — up to 40% of the project", "body": "<p>Title to a unit is separate; the land and common areas are held by the <span class='kw'>condominium corporation</span>. Foreigners may own units provided aggregate foreign ownership of the condominium corporation does not exceed <span class='kw'>40%</span>. Filipinos must hold at least 60%.</p><div class='trap-box'><span class='lbl'>TRAP</span><span>The 40% is measured across the whole project, not per unit. Once foreign holdings reach 40%, further sales to foreigners are void.</span></div>"}, {"num": "Unit vs. land", "title": "What a condo owner actually owns", "body": "<p>A unit owner holds exclusive title to the unit plus an undivided interest in common areas via shares in the condo corporation. The foreigner owns the <b>unit</b> (air space/improvement), while Filipinos still hold the land in the corporation.</p>"}, {"num": "Broker/appraiser relevance", "title": "Why REB and REA candidates care", "body": "<p>Brokers must verify foreign-ownership compliance before closing; appraisers must value units consistent with title restrictions. Check the condominium corporation's foreign-equity ratio.</p>"}]}];
+const traps=[{"t": "Foreigner owns land", "b": "False. Only Filipino citizens and corporations at least 60% Filipino-owned may own private land (Art. XII Sec. 7). Foreigners may lease or own condo units."}, {"t": "100% foreign ownership is always allowed", "b": "False. Up to 100% is allowed only outside the Negative List and outside constitutional/statutory limits. Land-owning corporations remain capped at 40% foreign."}, {"t": "US$500,000 is the threshold", "b": "Outdated. RA 7042 originally required US$500,000; RA 8179 lowered it to US$200,000; US$100,000 if advanced technology, startup, or 15 Filipino employees (RA 11647)."}, {"t": "50 direct employees", "b": "Outdated for the US$100,000 exception. RA 11647 requires at least 15 Filipino direct employees (or advanced tech / startup)."}, {"t": "Foreign lease is limited to 75 years", "b": "Outdated. RA 12252 (Sep 3, 2025) allows an aggregate of 99 years."}, {"t": "Condo 40% is per unit", "b": "False. The 40% cap applies to aggregate foreign ownership in the condominium corporation."}, {"t": "Buying shares = doing business", "b": "False. Mere investment as shareholder is not doing business under Sec. 3(d)."}, {"t": "Voting vs. capital", "b": "A Philippine national corporation needs 60% of capital stock outstanding AND entitled to vote (the 'control test' concern). Look at both."}, {"t": "Natural-born former Filipinos are treated as foreigners", "b": "False. Under Art. XII Sec. 8 they may own limited private land (5,000 sq m urban / 3 ha rural)."}, {"t": "A dummy arrangement is safe if the title is in a Filipino's name", "b": "False. The Anti-Dummy Law (CA 108) penalizes it, and the sale is void."}, {"t": "RA 7042 and RA 8179 are separate reviewers", "b": "They are one topic: RA 8179 amends RA 7042. Cite them together, plus RA 11647."}, {"t": "Negative List is permanent", "b": "False. It is reviewed every 2 years; the 12th list is EO 175 (June 2022)."}];
+const quiz=[{"q": "A corporation is a Philippine national under RA 7042 if at least what percent of capital stock outstanding and entitled to vote is Filipino-owned?", "opts": ["40%", "51%", "60%", "75%"], "a": 2, "ex": "Sec. 3: at least 60%."}, {"q": "Which law originally set the Foreign Investments Act of 1991?", "opts": ["RA 8179", "RA 7042", "RA 11647", "RA 4726"], "a": 1, "ex": "RA 7042, approved Jun 13, 1991 by Pres. Aquino."}, {"q": "Maximum aggregate foreign ownership in a condominium corporation under RA 4726:", "opts": ["25%", "30%", "40%", "60%"], "a": 2, "ex": "Foreign ownership may not exceed 40%; Filipinos hold at least 60%."}, {"q": "May a foreigner directly own land in the Philippines?", "opts": ["Yes, up to 40%", "Yes, if resident 10 years", "No, except by hereditary succession", "Yes, if the land is rural"], "a": 2, "ex": "Art. XII Sec. 7: private land only to Filipinos/60% corporations; hereditary succession is the exception."}, {"q": "RA 8179 lowered the minimum paid-in capital for foreign-owned domestic market enterprises from US$500,000 to:", "opts": ["US$100,000", "US$150,000", "US$200,000", "US$250,000"], "a": 2, "ex": "US$200,000 (with the US$100,000 exception)."}, {"q": "Under RA 11647, the US$100,000 exception requires at least how many Filipino direct employees (if relying on employment)?", "opts": ["5", "15", "50", "100"], "a": 1, "ex": "Reduced from 50 to 15."}, {"q": "Which law now allows foreign investors to lease private land up to 99 years?", "opts": ["RA 7652", "RA 12252", "RA 4726", "RA 8179"], "a": 1, "ex": "RA 12252 (Sep 3, 2025) amended RA 7652."}, {"q": "Which best states the difference between land and shares?", "opts": ["Foreigners may own land if they own shares", "Foreigners may hold up to 40% of shares in a land-owning corporation but cannot own the land", "Shares and land are the same for foreigners", "Foreigners may own 60% of shares"], "a": 1, "ex": "The corporation (60% Filipino) owns the land; foreigners may hold at most 40% of its shares."}, {"q": "How often is the Foreign Investment Negative List reviewed?", "opts": ["Every year", "Every 2 years", "Every 5 years", "Never"], "a": 1, "ex": "Reviewed every 2 years."}, {"q": "Mere investment as a shareholder in a domestic corporation is:", "opts": ["Doing business", "Not doing business", "Prohibited", "Subject to BOI registration"], "a": 1, "ex": "Sec. 3(d) excludes mere shareholding."}];
+
+const viewRoot = document.getElementById('viewRoot');
+const topbarTitle = document.getElementById('topbarTitle');
+let currentTab = 'home';
+let quizIdx = 0, quizScore = 0, quizAnswered = false;
+function accordionHTML(articles){
+  return articles.map((art) => `
+    <div class="article-block">
+      <div class="article-heading"><span>${art.heading}</span><span class="tag">${art.tag}</span></div>
+      ${art.sections.map((s) => `
+        <div class="sec-card" data-search="${(s.title+' '+s.num+' '+s.body+(s.trap||'')).toLowerCase().replace(/"/g,'&quot;')}">
+          <button class="sec-head" onclick="toggleSec(this)">
+            <span class="sec-num">${s.num}</span>
+            <span class="sec-title">${s.title}</span>
+            <svg class="sec-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="sec-body"><div class="sec-body-inner">
+            ${s.body}
+            ${s.trap ? `<div class="trap-box"><span class="lbl">TRAP</span><span>${s.trap}</span></div>` : ''}
+          </div></div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+function toggleSec(btn){
+  const card = btn.closest('.sec-card');
+  const body = card.querySelector('.sec-body');
+  const isOpen = card.classList.contains('open');
+  if(isOpen){
+    card.classList.remove('open');
+    body.style.maxHeight = null;
+  } else {
+    card.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 40 + 'px';
+  }
+}
+
+function renderHome(){
+  topbarTitle.textContent='Overview';
+  viewRoot.innerHTML=`
+  <div class="view-header"><div class="eyebrow-row"><span class="badge-pill">Foreign Investments</span></div>
+  <h1 class="view-title">RA 7042 + RA 8179 — Foreign Investments Act</h1>
+  <p class="view-sub">Governs foreign equity in Philippine businesses. Covers REB General/Fundamentals and REA Land Management &amp; Real Property Laws: the 60-40 rule, the Negative List, condominium ownership, and the crucial difference between owning land and owning shares.</p></div>
+  <div class="stat-row">
+    <div class="stat-card"><div class="n">60/40</div><div class="l">Filipino / foreign cap in land-owning corporations</div></div>
+    <div class="stat-card"><div class="n">40%</div><div class="l">Foreign ownership cap in a condominium corporation (RA 4726)</div></div>
+    <div class="stat-card"><div class="n">US$200K</div><div class="l">Reserved-to-Filipinos threshold; US$100K exceptions</div></div>
+    <div class="stat-card"><div class="n">99 yrs</div><div class="l">Max aggregate foreign lease of private land (RA 12252)</div></div>
+  </div>
+  <div class="article-heading"><span>Timeline at a glance</span></div>
+  <div class="home-timeline">${timeline.map(t=>`<div class="tl-item"><div class="tl-date">${t.date}</div><div class="tl-title">${t.title}</div><div class="tl-desc">${t.desc}</div></div>`).join('')}</div>
+  <div class="quicklinks">
+    <div class="qlink" onclick="switchTab('core')"><div class="qt">Core FIA Provisions →</div><div class="qd">RA 7042, RA 8179 and the RA 11647 update.</div></div>
+    <div class="qlink" onclick="switchTab('land')"><div class="qt">Land vs. Shares →</div><div class="qd">Art. XII, 60/40, natural-born citizens, leases.</div></div>
+    <div class="qlink" onclick="switchTab('condo')"><div class="qt">Condominium (RA 4726) →</div><div class="qd">40% foreign unit ownership explained.</div></div>
+    <div class="qlink" onclick="switchTab('quiz')"><div class="qt">Take the Quiz →</div><div class="qd">10 self-test questions with explanations.</div></div>
+  </div>`;
+}
+function renderCore(){topbarTitle.textContent='Core FIA Provisions';viewRoot.innerHTML=`<div class="view-header"><div class="eyebrow-row"><span class="badge-pill">RA 7042 · RA 8179 · RA 11647</span></div><h1 class="view-title">Foreign Investments Act</h1><p class="view-sub">The statute, its 1996 amendment, and the 2022 update.</p></div><div id="coreSections">${accordionHTML(coreArticles)}</div>`;}
+function renderLand(){topbarTitle.textContent='Land vs. Shares';viewRoot.innerHTML=`<div class="view-header"><div class="eyebrow-row"><span class="badge-pill">Constitution Art. XII</span></div><h1 class="view-title">Owning Land vs. Owning Shares</h1><p class="view-sub">Who may own land, who may hold shares, and who may only lease.</p></div><div id="landSections">${accordionHTML(landArticles)}</div>`;}
+function renderCondo(){topbarTitle.textContent='Condominium (RA 4726)';viewRoot.innerHTML=`<div class="view-header"><div class="eyebrow-row"><span class="badge-pill">40% foreign unit ownership</span></div><h1 class="view-title">Condominium Ownership by Foreigners</h1><p class="view-sub">Units, common areas and the 40% ceiling.</p></div><div id="condoSections">${accordionHTML(condoArticles)}</div>`;}
+function renderPeople(){
+  topbarTitle.textContent = 'Dates & People';
+  viewRoot.innerHTML = `
+    <div class="view-header">
+      <div class="eyebrow-row"><span class="badge-pill">Who &amp; When</span></div>
+      <h1 class="view-title">Key Dates &amp; People</h1>
+      <p class="view-sub">Key presidents, agencies and framers — plus the DTI/BOI/SEC/NEDA role split examiners love to test.</p>
+    </div>
+    <div class="article-heading"><span>Full timeline</span></div>
+    <div class="home-timeline" style="margin-bottom:34px;">
+      ${timeline.map(t => `
+        <div class="tl-item" data-search="${(t.date+' '+t.title+' '+t.desc).toLowerCase().replace(/"/g,'&quot;')}">
+          <div class="tl-date">${t.date}</div>
+          <div class="tl-title">${t.title}</div>
+          <div class="tl-desc">${t.desc}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="article-heading"><span>Key people &amp; institutions</span></div>
+    <div class="people-grid">
+      ${people.map(p => `
+        <div class="p-card" data-search="${(p.name+' '+p.role+' '+p.desc).toLowerCase().replace(/"/g,'&quot;')}">
+          <div class="p-name">${p.name}</div>
+          <div class="p-role">${p.role}</div>
+          <div class="p-desc">${p.desc}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderGlossary(){
+  topbarTitle.textContent = 'Glossary';
+  viewRoot.innerHTML = `
+    <div class="view-header">
+      <div class="eyebrow-row"><span class="badge-pill">Terms</span></div>
+      <h1 class="view-title">Glossary of Terms</h1>
+      <p class="view-sub">Nationality, equity and land-tenure terms in one place.</p>
+    </div>
+    <div class="glossary-grid">
+      ${glossary.map(g => `
+        <div class="g-card" data-search="${(g.term+' '+g.abbr+' '+g.def).toLowerCase().replace(/"/g,'&quot;')}">
+          <span class="g-term">${g.term}</span><span class="g-abbr">${g.abbr}</span>
+          <div class="g-def">${g.def}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderTraps(){
+  topbarTitle.textContent = 'Board Exam Traps';
+  viewRoot.innerHTML = `
+    <div class="view-header">
+      <div class="eyebrow-row"><span class="badge-pill">Ownership-vs-shares and 40/60 gotchas</span></div>
+      <h1 class="view-title">Board Exam Traps</h1>
+      <p class="view-sub">Land vs. shares, 40% vs. 60%, US$ thresholds that changed, and lease terms that were just replaced.</p>
+    </div>
+    <div class="trap-list">
+      ${traps.map((t,i) => `
+        <div class="trap-item" data-search="${(t.t+' '+t.b).toLowerCase().replace(/"/g,'&quot;')}">
+          <div class="tnum">TRAP ${i+1}</div>
+          <div class="ttitle">${t.t}</div>
+          <div class="tbody">${t.b}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderQuiz(reset){
+  topbarTitle.textContent = 'Self-Test Quiz';
+  if(reset){ quizIdx = 0; quizScore = 0; }
+  quizAnswered = false;
+
+  if(quizIdx >= quiz.length){
+    viewRoot.innerHTML = `
+      <div class="view-header">
+        <div class="eyebrow-row"><span class="badge-pill">Results</span></div>
+        <h1 class="view-title">Quiz Complete</h1>
+      </div>
+      <div class="quiz-box">
+        <div class="quiz-score">${quizScore} / ${quiz.length} correct
+          <div class="sub">${quizScore === quiz.length ? "Perfect score — ready for the board." : quizScore/quiz.length >= 0.7 ? "Solid — review the misses below and go again." : "Keep drilling the 40/60 rules and thresholds, then retake."}</div>
+        </div>
+        <div class="quiz-nav" style="justify-content:center;">
+          <button class="btn" onclick="renderQuiz(true)">Retake Quiz</button>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const item = quiz[quizIdx];
+  viewRoot.innerHTML = `
+    <div class="view-header">
+      <div class="eyebrow-row"><span class="badge-pill">Self-Test</span></div>
+      <h1 class="view-title">Foreign Investments Quiz</h1>
+      <p class="view-sub">Questions on RA 7042, RA 8179, RA 11647, the Constitution's land rules, RA 4726 and the leasing laws.</p>
+    </div>
+    <div class="quiz-box">
+      <div class="quiz-progress">Question ${quizIdx+1} of ${quiz.length} &nbsp;·&nbsp; Score so far: ${quizScore}</div>
+      <div class="quiz-q">${item.q}</div>
+      <div class="quiz-opts">
+        ${item.opts.map((o,i) => `<button class="quiz-opt" onclick="answerQuiz(${i})">${o}</button>`).join('')}
+      </div>
+      <div class="quiz-explain" id="quizExplain">${item.ex}</div>
+      <div class="quiz-nav">
+        <button class="btn ghost" onclick="renderQuiz(true)">Restart</button>
+        <button class="btn" id="quizNextBtn" style="opacity:.4; pointer-events:none;" onclick="nextQuiz()">Next →</button>
+      </div>
+    </div>
+  `;
+}
+
+function answerQuiz(i){
+  if(quizAnswered) return;
+  quizAnswered = true;
+  const item = quiz[quizIdx];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach((btn, idx) => {
+    btn.classList.add('disabled');
+    if(idx === item.a) btn.classList.add('correct');
+    else if(idx === i) btn.classList.add('wrong');
+  });
+  if(i === item.a) quizScore++;
+  document.getElementById('quizExplain').classList.add('show');
+  const nb = document.getElementById('quizNextBtn');
+  nb.style.opacity = 1;
+  nb.style.pointerEvents = 'auto';
+}
+
+function nextQuiz(){
+  quizIdx++;
+  renderQuiz(false);
+}
+
+/* ============================================================
+   TAB SWITCHING + SEARCH
+   ============================================================ */
+const renderers = {
+  home: renderHome, core: renderCore, land: renderLand, condo: renderCondo,
+  people: renderPeople, glossary: renderGlossary, traps: renderTraps,
+  quiz: () => renderQuiz(true)
+};
+
+function switchTab(tab){
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.getElementById('searchInput').value = '';
+  renderers[tab]();
+  window.scrollTo(0,0);
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  const searchable = document.querySelectorAll('[data-search]');
+  if(!q){
+    searchable.forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll('.article-block, .article-heading').forEach(el => el.classList.remove('hidden'));
+    const nores = document.getElementById('noResults');
+    if(nores) nores.remove();
+    return;
+  }
+  let anyVisible = false;
+  searchable.forEach(el => {
+    const match = el.dataset.search.includes(q);
+    el.classList.toggle('hidden', !match);
+    if(match) anyVisible = true;
+    if(match && el.classList.contains('sec-card')){
+      el.classList.add('open');
+      const body = el.querySelector('.sec-body');
+      if(body) body.style.maxHeight = body.scrollHeight + 40 + 'px';
+    }
+  });
+  let nores = document.getElementById('noResults');
+  if(!anyVisible){
+    if(!nores){
+      nores = document.createElement('div');
+      nores.id = 'noResults';
+      nores.className = 'nores';
+      nores.textContent = 'No matches in this section. Try another tab.';
+      viewRoot.appendChild(nores);
+    }
+  } else if(nores){
+    nores.remove();
+  }
+});
+
+/* init */
+renderHome();
+</script>
+</body>
+</html>
